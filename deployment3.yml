@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-deployment
+  namespace: test-ns
+  labels:
+    app: ci-cd
+    author: ravicharan
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ci-cd
+  template:
+    metadata:
+      name: jenkins-pod
+      labels:
+        app: ci-cd
+    spec:
+      containers:
+        - name: myjenkins
+          image: jenkins/jenkins
+          ports:
+            - containerPort: 8080
+              hostPort: 9090
+            - containerPort: 50000
+              hostPort: 9999
+         
+
+
+...
