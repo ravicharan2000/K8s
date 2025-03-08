@@ -7,7 +7,7 @@ metadata:
     type: proxy
     author: ravicharan
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       type: proxy
@@ -20,9 +20,4 @@ spec:
       containers:
         - name: mynginx
           image: nginx
-          ports:
-            - containerPort: 80
-              hostPort: 9090
-
-
 ...

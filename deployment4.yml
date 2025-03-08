@@ -1,0 +1,34 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deployment
+  labels:
+    type: db
+    author: ravicharan
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: db
+      author: ravicharan
+  template:
+    metadata:
+      name: postgres-pod
+      labels:
+        app: db
+        author: ravicharan
+    spec:
+      containers:
+        - name: mydb
+          image: postgres
+          env:
+            - name: POSTGRES_PASSWORD
+              value: ravicharan
+            - name: POSTGRES_USER
+              value: myuser
+            - name: POSTGRES_DB
+              value: mydb
+
+
+...
